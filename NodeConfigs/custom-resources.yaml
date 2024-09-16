@@ -13,4 +13,4 @@ spec:
       cidr: IP.of.Choice/Range
       encapsulation: VXLANCrossSubnet
       natOutgoing: Enabled
-      nodeSelector: all()
+      nodeSelector: all() 
