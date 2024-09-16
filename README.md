@@ -76,12 +76,6 @@ rm -f crictl-$VERSION-linux-amd64.tar.gz
 
 ---
 sudo vim /etc/crictl.yaml
-
-runtime-endpoint: unix:///var/run/containerd/containerd.sock
-image-endpoint: unix:///var/run/containerd/containerd.sock
-timeout: 10
-debug: false
-
 ---
 
 systemctl enable --now containerd.service
@@ -113,7 +107,7 @@ vi kubeadm-config.yaml
 apiVersion: kubeadm.k8s.io/v1beta3
 kind: ClusterConfiguration
 kubernetesVersion: 1.29.9
-controlPlaneEndpoint: "qa-master1:6443"
+controlPlaneEndpoint: "optimus:6443"
 networking:
   podSubnet: 10.30.0.0/16
 
@@ -139,7 +133,7 @@ spec:
     # Note: The ipPools section cannot be modified post-install.
     ipPools:
     - blockSize: 26
-      cidr: 10.30.0.0/16 <-- IP of Choice
+      cidr: IP.of.Choice/Range
       encapsulation: VXLANCrossSubnet
       natOutgoing: Enabled
       nodeSelector: all()
